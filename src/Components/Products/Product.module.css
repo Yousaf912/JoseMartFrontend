@@ -1,0 +1,65 @@
+.loder{
+    padding-top: 20%;
+}
+.main{
+padding-top: 10%;
+}
+.thumbnail img{
+width: 100%;
+}
+.picborder{
+    border: 2px solid #f7444e ;
+    border-radius: 5px;
+}
+.btn{
+    background-color: #f7444e;
+    border: none;
+    outline: none;
+}
+.btn:hover{
+    background-color: #fc2e38;
+}
+.imgs{
+    cursor: pointer;
+}
+.lst{
+    list-style: none;
+}
+.lst:hover{
+    background-color: #f7444e;
+    color: whitesmoke;
+    cursor: pointer;
+}
+.active{
+    background-color: #f7444e;
+    color: white;
+}
+.catimg {
+    width: 120px;
+    height: 120px;
+
+}
+
+.catimg img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+}
+
+.crdimg {
+    height: 70%;
+}
+
+.card {
+    transition: transform 1.5s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
