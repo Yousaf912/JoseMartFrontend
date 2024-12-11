@@ -16,7 +16,7 @@ export const HomeProducts = () => {
 
     const getProducts = async () => {
         try {
-            await fetch('http://localhost:3000/getallproducts')
+            await fetch('https://jose-mart-backend.vercel.app/getallproducts')
                 .then(async (res) => {
                     const dta = await res.json();
                     if (res.ok) {
@@ -45,7 +45,7 @@ export const HomeProducts = () => {
                 toast.error('First Login into your account')
             }
             else{
-                await fetch('http://localhost:3000/check',{
+                await fetch('https://jose-mart-backend.vercel.app/check',{
                     method:'GET',
                     headers:{
                         "Authorization":`Bearer ${token}`

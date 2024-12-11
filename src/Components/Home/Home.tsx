@@ -34,7 +34,7 @@ export const Home = () => {
 
     const getCatagory = async () => {
         try {
-            await fetch('http://localhost:3000/getcatagory').then(async (res) => {
+            await fetch('https://jose-mart-backend.vercel.app/getcatagory').then(async (res) => {
                 const data = await res.json()
                 setCatagoryName(data.allCategories)
             })
