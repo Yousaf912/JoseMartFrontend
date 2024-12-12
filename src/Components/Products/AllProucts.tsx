@@ -16,7 +16,7 @@ export const AllProductsPage = () => {
 
     const getCategory = async () => {
         try {
-            await fetch('http://localhost:3000/getcatagory').then(async (res) => {
+            await fetch('https://jose-backend.vercel.app/getcatagory').then(async (res) => {
                 const data = await res.json()
                 setCatgeory(data.allCategories)
             })
@@ -29,7 +29,7 @@ export const AllProductsPage = () => {
         if(location != 'products'){
             
             try {
-                await fetch(`http://localhost:3000/searchproduct/${location}`).then(async (res) => {
+                await fetch(`https://jose-backend.vercel.app/searchproduct/${location}`).then(async (res) => {
                     const fnal = await res.json();
                     setproducts(fnal.prodyct.products);
                     setLoader(false)
@@ -41,7 +41,7 @@ export const AllProductsPage = () => {
         }else{
 
             try {
-                await fetch(`http://localhost:3000/getproductbycategory/${categoryname.catagory}`).then(async (res) => {
+                await fetch(`https://jose-backend.vercel.app/getproductbycategory/${categoryname.catagory}`).then(async (res) => {
                     const fnal = await res.json();
                     setproducts(fnal.products);
                     setLoader(false)

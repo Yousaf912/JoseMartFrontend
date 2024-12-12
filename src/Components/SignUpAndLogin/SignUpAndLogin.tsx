@@ -36,7 +36,7 @@ const SignUplOGIN = () => {
 
     const signup = async () => {
         try {
-            await fetch('http://localhost:3000/signup', {
+            await fetch('https://jose-backend.vercel.app/signup', {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"
@@ -76,7 +76,7 @@ const SignUplOGIN = () => {
 
     const login = async () => {
         try {
-            const res = await fetch('http://localhost:3000/login', {
+            const res = await fetch('https://jose-backend.vercel.app/login', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

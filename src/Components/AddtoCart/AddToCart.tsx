@@ -25,7 +25,7 @@ export const AddtoCart = () => {
 
     const getCartData = async () => {
         try {
-            await fetch(`http://localhost:3000/getcartdata/${userid}`)
+            await fetch(`https://jose-backend.vercel.app/getcartdata/${userid}`)
                 .then(async (res) => {
                     const data = await res.json();
                     await setCartData(data.products);
@@ -56,7 +56,7 @@ export const AddtoCart = () => {
                 toast.error('First login');
             }
 
-            fetch(`http://localhost:3000/increase/${userid}/${id}`, {
+            fetch(`https://jose-backend.vercel.app/increase/${userid}/${id}`, {
                 method: 'PUT',
                 headers: {
                     "Content-Type": "application/json"
@@ -76,7 +76,7 @@ export const AddtoCart = () => {
     const deleteProduct = async (productid: any) => {
         try {
             const userid = localStorage.getItem('userid');
-            fetch(`http://localhost:3000/delete/${userid}/${productid}`, {
+            fetch(`https://jose-backend.vercel.app/${userid}/${productid}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json"

@@ -20,7 +20,7 @@ export const SingleProduct = () => {
 
     const getSingleProduct = async () => {
         try {
-            const prodct = await fetch(`http://localhost:3000/getproduct/${productid.id}`);
+            const prodct = await fetch(`https://jose-backend.vercel.app/getproduct/${productid.id}`);
             const fnal = await prodct.json();
             setProduct(fnal.product)
             setimg(fnal.product.thumbnail)
@@ -55,7 +55,7 @@ export const SingleProduct = () => {
             toast.error('plase first login')
         } else {
             try {
-                const addproduct = await fetch(`http://localhost:3000/addproduct/${userid}`, {
+                const addproduct = await fetch(`https://jose-backend.vercel.app/addproduct/${userid}`, {
                     method: 'PUT',
                     headers: {
                         "Content-Type": "application/json"

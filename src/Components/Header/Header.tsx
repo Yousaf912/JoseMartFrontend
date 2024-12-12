@@ -44,7 +44,7 @@ export const Header = () => {
         const userid = localStorage.getItem('userid')
         if (userid) {
             try {
-                await fetch(`http://localhost:3000/getcartdata/${userid}`).then(async (res) => {
+                await fetch(`https://jose-backend.vercel.app/getcartdata/${userid}`).then(async (res) => {
                     const fnal = await res.json();
                     setCartdata(fnal.products.length)
 
