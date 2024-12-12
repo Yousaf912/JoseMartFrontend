@@ -24,6 +24,7 @@ import { Footer } from "../Footer/Footer";
 
 
 
+
 export const Home = () => {
     const [catagoryName, setCatagoryName] = useState([])
     const [showcatagory, setshowCatagory] = useState(false);
@@ -34,7 +35,7 @@ export const Home = () => {
 
     const getCatagory = async () => {
         try {
-            await fetch('https://jose-mart-backend.vercel.app/getcatagory').then(async (res) => {
+            await fetch('https://jose-backend.vercel.app/getcatagory').then(async (res) => {
                 const data = await res.json()
                 setCatagoryName(data.allCategories)
             })
