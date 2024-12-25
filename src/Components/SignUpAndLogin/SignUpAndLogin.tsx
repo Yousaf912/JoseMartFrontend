@@ -20,6 +20,14 @@ const SignUplOGIN = () => {
         password: ''
     })
     const navigate = useNavigate();
+    const localUrl = import.meta.env.VITE_LOCAL_URL;
+    const deployUrl = import.meta.env.VITE_DEPLOY_URL;
+    const baseUrl = import.meta.env.MODE === 'development' ? deployUrl : localUrl;
+    const env =import.meta.env 
+
+    console.log(env);
+    console.log(baseUrl);
+        
 
     const openlink = (name: any) => {
         navigate(name)
@@ -36,7 +44,7 @@ const SignUplOGIN = () => {
 
     const signup = async () => {
         try {
-            await fetch('https://jose-backend.vercel.app/signup', {
+            await fetch(`${baseUrl}/signup`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"
@@ -76,7 +84,7 @@ const SignUplOGIN = () => {
 
     const login = async () => {
         try {
-            const res = await fetch('https://jose-backend.vercel.app/login', {
+            const res = await fetch(`${baseUrl}/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

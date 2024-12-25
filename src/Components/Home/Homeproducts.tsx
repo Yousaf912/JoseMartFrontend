@@ -12,11 +12,16 @@ export const HomeProducts = () => {
     const dispatch = useDispatch();
     const [loader, setLoader] = useState(true);
     const navigate = useNavigate();
+    const localUrl = import.meta.env.VITE_LOCAL_URL;
+    const deployUrl = import.meta.env.VITE_DEPLOY_URL;
+    
+    const baseUrl = import.meta.env.MODE === 'production' ? deployUrl : localUrl;
+    
 
 
     const getProducts = async () => {
         try {
-            await fetch('https://jose-backend.vercel.app/getallproducts')
+            await fetch(`${baseUrl}/getallproducts`)
                 .then(async (res) => {
                     const dta = await res.json();
                     if (res.ok) {
@@ -45,7 +50,7 @@ export const HomeProducts = () => {
                 toast.error('First Login into your account')
             }
             else{
-                await fetch('https://jose-backend.vercel.app/check',{
+                await fetch(`${baseUrl}/check`,{
                     method:'GET',
                     headers:{
                         "Authorization":`Bearer ${token}`

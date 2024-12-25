@@ -15,6 +15,12 @@ export const Header = () => {
     const inputvalue = useRef<any>('');
     const [cartdata, setCartdata] = useState(0)
     const triger = useSelector((store: any) => store.triger.triger);
+    
+    const localUrl = import.meta.env.VITE_LOCAL_URL;
+    const deployUrl = import.meta.env.VITE_DEPLOY_URL;
+    
+    const baseUrl = import.meta.env.MODE === 'production' ? deployUrl : localUrl;
+    
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -44,7 +50,7 @@ export const Header = () => {
         const userid = localStorage.getItem('userid')
         if (userid) {
             try {
-                await fetch(`https://jose-backend.vercel.app/getcartdata/${userid}`).then(async (res) => {
+                await fetch(`${baseUrl}/getcartdata/${userid}`).then(async (res) => {
                     const fnal = await res.json();
                     setCartdata(fnal.products.length)
 

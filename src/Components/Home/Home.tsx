@@ -29,13 +29,19 @@ export const Home = () => {
     const [catagoryName, setCatagoryName] = useState([])
     const [showcatagory, setshowCatagory] = useState(false);
     const [img, setImg] = useState(0);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
+    const localUrl = import.meta.env.VITE_LOCAL_URL;
+    const deployUrl = import.meta.env.VITE_DEPLOY_URL;
+    
+    const baseUrl = import.meta.env.MODE === 'production' ? deployUrl : localUrl;
+    
 
     const CatagoryImgs = [cat1, cat2, cat3, cat4, cat5, cat6, cat7, cat8, cat9, cat10, cat11]
 
     const getCatagory = async () => {
         try {
-            await fetch('https://jose-backend.vercel.app/getcatagory').then(async (res) => {
+            await fetch(`${baseUrl}/getcatagory`).then(async (res) => {
                 const data = await res.json()
                 setCatagoryName(data.allCategories)
             })

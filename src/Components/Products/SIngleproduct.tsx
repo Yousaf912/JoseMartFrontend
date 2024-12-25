@@ -17,10 +17,14 @@ export const SingleProduct = () => {
     const productid = useParams();
     const dispatch = useDispatch();
     const triger = useSelector((state:any)=>state.triger.triger)
+    const localUrl = import.meta.env.VITE_LOCAL_URL;
+    const deployUrl = import.meta.env.VITE_DEPLOY_URL;
+    const baseUrl = import.meta.env.MODE === 'production' ? deployUrl : localUrl;
+    
 
     const getSingleProduct = async () => {
         try {
-            const prodct = await fetch(`https://jose-backend.vercel.app/getproduct/${productid.id}`);
+            const prodct = await fetch(`${baseUrl}/getproduct/${productid.id}`);
             const fnal = await prodct.json();
             setProduct(fnal.product)
             setimg(fnal.product.thumbnail)
@@ -55,7 +59,7 @@ export const SingleProduct = () => {
             toast.error('plase first login')
         } else {
             try {
-                const addproduct = await fetch(`https://jose-backend.vercel.app/addproduct/${userid}`, {
+                const addproduct = await fetch(`${baseUrl}/addproduct/${userid}`, {
                     method: 'PUT',
                     headers: {
                         "Content-Type": "application/json"

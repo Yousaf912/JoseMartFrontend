@@ -12,11 +12,16 @@ export const AllProductsPage = () => {
     const [loader, setLoader] = useState(true);
     const [products, setproducts] = useState([]);
     const location = useLocation().pathname.split("/")[2];
+    
+    const localUrl = import.meta.env.VITE_LOCAL_URL;
+    const deployUrl = import.meta.env.VITE_DEPLOY_URL;
+    const baseUrl = import.meta.env.MODE === 'production' ? deployUrl : localUrl;
+    
    
 
     const getCategory = async () => {
         try {
-            await fetch('https://jose-backend.vercel.app/getcatagory').then(async (res) => {
+            await fetch(`${baseUrl}/getcatagory`).then(async (res) => {
                 const data = await res.json()
                 setCatgeory(data.allCategories)
             })
@@ -29,7 +34,7 @@ export const AllProductsPage = () => {
         if(location != 'products'){
             
             try {
-                await fetch(`https://jose-backend.vercel.app/searchproduct/${location}`).then(async (res) => {
+                await fetch(`${baseUrl}/searchproduct/${location}`).then(async (res) => {
                     const fnal = await res.json();
                     setproducts(fnal.prodyct.products);
                     setLoader(false)
@@ -41,7 +46,7 @@ export const AllProductsPage = () => {
         }else{
 
             try {
-                await fetch(`https://jose-backend.vercel.app/getproductbycategory/${categoryname.catagory}`).then(async (res) => {
+                await fetch(`${baseUrl}/getproductbycategory/${categoryname.catagory}`).then(async (res) => {
                     const fnal = await res.json();
                     setproducts(fnal.products);
                     setLoader(false)

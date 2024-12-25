@@ -22,10 +22,16 @@ export const AddtoCart = () => {
     const triger = useSelector((state:any)=>state.triger.triger)
     const dispatch=useDispatch();
     const navigate = useNavigate()
+    
+    const localUrl = import.meta.env.VITE_LOCAL_URL;
+    const deployUrl = import.meta.env.VITE_DEPLOY_URL;
+    
+    const baseUrl = import.meta.env.MODE === 'production' ? deployUrl : localUrl;
+    
 
     const getCartData = async () => {
         try {
-            await fetch(`https://jose-backend.vercel.app/getcartdata/${userid}`)
+            await fetch(`${baseUrl}/getcartdata/${userid}`)
                 .then(async (res) => {
                     const data = await res.json();
                     await setCartData(data.products);
@@ -56,7 +62,7 @@ export const AddtoCart = () => {
                 toast.error('First login');
             }
 
-            fetch(`https://jose-backend.vercel.app/increase/${userid}/${id}`, {
+            fetch(`${baseUrl}/increase/${userid}/${id}`, {
                 method: 'PUT',
                 headers: {
                     "Content-Type": "application/json"
@@ -76,7 +82,7 @@ export const AddtoCart = () => {
     const deleteProduct = async (productid: any) => {
         try {
             const userid = localStorage.getItem('userid');
-            fetch(`https://jose-backend.vercel.app/${userid}/${productid}`, {
+            fetch(`${baseUrl}/delete/${userid}/${productid}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json"
