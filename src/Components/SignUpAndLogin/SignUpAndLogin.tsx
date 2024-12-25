@@ -20,12 +20,9 @@ const SignUplOGIN = () => {
         password: ''
     })
     const navigate = useNavigate();
-    const localUrl = import.meta.env.VITE_LOCAL_URL;
     const deployUrl = import.meta.env.VITE_DEPLOY_URL;
     const baseUrl = deployUrl;
-    const env =import.meta.env 
-
-    console.log(env);
+   
     console.log(baseUrl);
         
 
