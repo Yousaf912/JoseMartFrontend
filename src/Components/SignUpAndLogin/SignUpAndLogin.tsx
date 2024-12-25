@@ -22,7 +22,7 @@ const SignUplOGIN = () => {
     const navigate = useNavigate();
     const localUrl = import.meta.env.VITE_LOCAL_URL;
     const deployUrl = import.meta.env.VITE_DEPLOY_URL;
-    const baseUrl = import.meta.env.MODE === 'development' ? deployUrl : localUrl;
+    const baseUrl = deployUrl;
     const env =import.meta.env 
 
     console.log(env);
