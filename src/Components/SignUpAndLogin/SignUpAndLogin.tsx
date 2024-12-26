@@ -6,7 +6,7 @@ import img1 from '../../assets/signup.png'
 import img2 from '../../assets/signup2.png'
 import { CgProfile } from "react-icons/cg";
 import { useState } from 'react'
-import { toast, ToastContainer } from 'react-toastify'
+import { toast} from 'react-toastify'
 
 
 
@@ -111,7 +111,7 @@ const SignUplOGIN = () => {
 
     return (
         <div className={style.main}>
-            <ToastContainer />
+           
             <Header />
             <div className={`container mb-5 pt-5`}>
                 <div className="row">
