@@ -46,10 +46,7 @@ export const HomeProducts = () => {
 
     const openproduct=async(id:number)=>{
         try{
-            if(token == null){
-                toast.error('First Login into your account')
-            }
-            else{
+           
                 await fetch(`${baseUrl}/check`,{
                     method:'GET',
                     headers:{
@@ -64,8 +61,7 @@ export const HomeProducts = () => {
                     
                    navigate(`/home/product/${id}`)
                 })
-            }
-
+            
           
 
 
