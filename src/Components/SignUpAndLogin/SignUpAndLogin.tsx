@@ -89,7 +89,8 @@ const SignUplOGIN = () => {
                 body: JSON.stringify({
                     mail: data.mail,
                     password: data.password
-                })
+                }),
+                credentials: 'include', 
             })
             const dta = await res.json();
            
