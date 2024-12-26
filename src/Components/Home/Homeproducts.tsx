@@ -78,7 +78,6 @@ export const HomeProducts = () => {
 
     return (
         <div>
-            <ToastContainer />
             <h2>Products</h2>
             <div>
                 {loader ?
