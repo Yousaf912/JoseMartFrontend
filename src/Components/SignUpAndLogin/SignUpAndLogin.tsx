@@ -129,12 +129,12 @@ const SignUplOGIN = () => {
                                     <div className='d-flex flex-column mt-3'>
                                         Name:
                                         <input value={data.name} onChange={getData} name='name' className='p-2 rounded-3' type="text" placeholder='Enter your name' required />
-                                        {erors.name && <h6 className='text-danger'>{erors.name.message}</h6>}
+                                        {erors.name && <h6 className='text-success'>{erors.name.message}</h6>}
                                     </div>
                                     <div className='d-flex flex-column mt-3'>
                                         Number:
                                         <input value={data.number} onChange={getData} name='number' className='p-2 rounded-3' type="number" placeholder='Enter your number' required />
-                                        {erors.number && <h6 className='text-danger'>{erors.number.message}</h6>}
+                                        {erors.number && <h6 className='text-success'>{erors.number.message}</h6>}
                                     </div>
 
                                 </div>
@@ -142,12 +142,12 @@ const SignUplOGIN = () => {
                             <div className='d-flex flex-column'>
                                 Email Address:
                                 <input value={data.mail} onChange={getData} name='mail' className='p-2 rounded-3' type="email" placeholder='enter email' required />
-                                {erors.mail && <h6 className='text-danger'>{erors.mail.message}</h6>}
+                                {erors.mail && <h6 className='text-success'>{erors.mail.message}</h6>}
                             </div>
                             <div className='d-flex flex-column mt-3'>
                                 Password:
                                 <input value={data.password} onChange={getData} name='password' className='p-2 rounded-3' type="password" placeholder='Enter Password' required />
-                                {erors.password && <h6 className='text-danger'>{erors.password.message}</h6>}
+                                {erors.password && <h6 className='text-success'>{erors.password.message}</h6>}
                             </div>
                             <div className='mt-4 text-center'>
                                 {
