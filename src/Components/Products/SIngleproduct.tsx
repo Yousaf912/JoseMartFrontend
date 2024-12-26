@@ -56,7 +56,7 @@ export const SingleProduct = () => {
         }
         const userid = localStorage.getItem('userid');
         if (!userid) {
-            toast.error('plase first login')
+            toast.error('please first login')
         } else {
             try {
                 const addproduct = await fetch(`${baseUrl}/addproduct/${userid}`, {

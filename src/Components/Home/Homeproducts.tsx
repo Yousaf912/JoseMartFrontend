@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Loder } from "../Loader";
 import style from './home.module.css'
 import { useNavigate } from "react-router-dom";
-import {  ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 
 
@@ -14,9 +14,9 @@ export const HomeProducts = () => {
     const navigate = useNavigate();
     const localUrl = import.meta.env.VITE_LOCAL_URL;
     const deployUrl = import.meta.env.VITE_DEPLOY_URL;
-    
+
     const baseUrl = import.meta.env.MODE === 'production' ? deployUrl : localUrl;
-    
+
 
 
     const getProducts = async () => {
@@ -42,30 +42,35 @@ export const HomeProducts = () => {
 
     const products = AllProducts.Products
     const token = localStorage.getItem('token');
-   
 
-    const openproduct=async(id:number)=>{
-        try{
-           
-                await fetch(`${baseUrl}/check`,{
-                    method:'GET',
-                    headers:{
-                        "Authorization":`Bearer ${token}`
+
+    const openproduct = async (id: number) => {
+        try {
+            if (!token) {
+                toast.error('First Login into your account')
+            }
+            else {
+                await fetch(`${baseUrl}/check`, {
+                    method: 'GET',
+                    headers: {
+                        "Authorization": `Bearer ${token}`
                     }
-                }).then(async(res)=>{
+                }).then(async (res) => {
                     const user = await res.json();
                     console.log(user);
-                    
+
                     const userid = user.user.finduser._id
-                   await localStorage.setItem('userid',userid)
-                    
-                   navigate(`/home/product/${id}`)
+                    await localStorage.setItem('userid', userid)
+
+                    navigate(`/home/product/${id}`)
                 })
-            
-          
+            }
 
 
-        }catch(er){console.log(er);
+
+
+        } catch (er) {
+            console.log(er);
         }
 
     }
@@ -73,7 +78,7 @@ export const HomeProducts = () => {
 
     return (
         <div>
-            <ToastContainer/>
+            <ToastContainer />
             <h2>Products</h2>
             <div>
                 {loader ?
@@ -85,7 +90,7 @@ export const HomeProducts = () => {
                             {products.length != 0 &&
                                 products.map((val: any, i: number) => {
                                     return (
-                                        <div onClick={()=>openproduct(val.id)} key={i} className={`${style.card} col-md-3 col-sm-5 d-flex flex-column justify-content-between border rounded-4 mt-3 shadow ms-1`}>
+                                        <div onClick={() => openproduct(val.id)} key={i} className={`${style.card} col-md-3 col-sm-5 d-flex flex-column justify-content-between border rounded-4 mt-3 shadow ms-1`}>
                                             <div className={`${style.crdimg}`}>
                                                 <img src={val.images[0]} />
                                             </div>
